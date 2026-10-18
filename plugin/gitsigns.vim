@@ -22,8 +22,17 @@ enddef
 def Refresh(): void
   const buf = bufnr('%')
   Clear()
-  const out = systemlist(printf('git -C %s --no-pager diff --unified=0 --no-color -- %s',
-        shellescape(expand('%:p:h')), shellescape(expand('%:p'))))
+  const out = systemlist([
+    'git',
+    '-C',
+    expand('%:p:h'),
+    '--no-pager',
+    'diff',
+    '--unified=0',
+    '--no-color',
+    '--',
+    expand('%:p')
+  ])
   if v:shell_error != 0
     return
   endif
