@@ -20,6 +20,9 @@ def Clear(): void
 enddef
 
 def Refresh(): void
+  if &buftype != ''
+    return
+  endif
   const buf = bufnr('%')
   Clear()
   const out = systemlist([
