@@ -88,7 +88,7 @@ command! GitSignsToggle call Toggle()
 
 augroup gitsigns
   autocmd!
-  autocmd BufReadPost,BufWritePost * if get(b:, 'gitsigns_enabled', 1) | call Refresh() | endif
+  autocmd BufReadPost,BufWritePost,FocusGained * if get(b:, 'gitsigns_enabled', 1) | call Refresh() | endif
 augroup END
 
 # Jump to the next (dir>0) or previous (dir<0) changed chunk, wrapping around.
